@@ -11,12 +11,13 @@ import retrofit2.Response
 
 class repository( private var retrofit: RetrofitInstance = RetrofitInstance) {
 
-     var result: MutableLiveData<Userresponse?> = MutableLiveData()
-
-     init {
-         apicall()
-          Log.e("tags", "intitfuncalled")
-     }
+//     var result: MutableLiveData<Userresponse?> = MutableLiveData()
+//     var result:LiveData<Userresponse> = MutableLiveData()
+    var posts = MutableLiveData<Userresponse?>()
+//     init {
+//         apicall()
+//          Log.e("tags", "intitfuncalled")
+//     }
     fun apicall(){
         Log.e("tags", "apicall start")
          retrofit.api.getsignin().enqueue(object : Callback<Userresponse?>{
@@ -27,7 +28,8 @@ class repository( private var retrofit: RetrofitInstance = RetrofitInstance) {
 //                        result = response.body().toString()
                         if(response.body() != null){
                              Log.e("tags" , response.body().toString())
-
+                           posts.value = response.body()
+                            Log.e("data", posts.value.toString())
                         }
                    }
                   else{
@@ -40,5 +42,9 @@ class repository( private var retrofit: RetrofitInstance = RetrofitInstance) {
               }
 
          })
+    }
+    fun getresponse(): MutableLiveData<Userresponse?> {
+
+        return posts
     }
 }

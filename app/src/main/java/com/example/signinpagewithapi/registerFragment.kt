@@ -23,6 +23,7 @@ class registerFragment : Fragment() {
 private var _binding:FragmentRegisterBinding?= null
 private val binding get() = _binding!!
     private val viewModel: viewmodel by viewModels()
+    var result : Userresponse? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,11 +39,16 @@ private val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-     viewModel.repository.result.observe(viewLifecycleOwner, {
-         if(it != null){
-             Log.e("tags", it.data.toString())
-         }
-     })
+//     viewModel.repository.result.observe(viewLifecycleOwner, {
+//         if(it != null){
+//             Log.e("tags", it.data.toString())
+//         }
+//     })
+        viewModel.getresponse().observe(viewLifecycleOwner,{
+            result = it
+    binding.texts.text = result?.data.toString()
+
+        })
     }
 
     override fun onDestroy() {

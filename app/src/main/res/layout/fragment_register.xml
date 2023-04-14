@@ -115,6 +115,7 @@ android:textColor="@color/white"
 
     </LinearLayout>
     <Button
+        android:id="@+id/sigup_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/emailspasswords"
@@ -122,6 +123,17 @@ android:textColor="@color/white"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
         android:text="Signup"/>
+
+    <TextView
+        android:id="@+id/texts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="text"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sigup_btn" />
 
     <LinearLayout
         android:layout_width="match_parent"
