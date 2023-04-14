@@ -5,7 +5,7 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface signinapi {
-
-    @GET("/users")
+//    https://reqres.in/api/users?page=2
+    @GET("/api/users?page=2")
     fun getsignin():Call<Userresponse>
 }
