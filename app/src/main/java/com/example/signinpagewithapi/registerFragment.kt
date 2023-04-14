@@ -1,23 +1,15 @@
 package com.example.signinpagewithapi
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.signinpagewithapi.databinding.FragmentRegisterBinding
 import com.example.signinpagewithapi.models.Userresponse
-import com.example.signinpagewithapi.retrofit.RetrofitInstance
 import com.example.signinpagewithapi.viewmodel.viewmodel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.util.Objects
 
 class registerFragment : Fragment() {
 private var _binding:FragmentRegisterBinding?= null
@@ -45,8 +37,13 @@ private val binding get() = _binding!!
 //         }
 //     })
         viewModel.getresponse().observe(viewLifecycleOwner,{
+
             result = it
-    binding.texts.text = result?.data.toString()
+            for (i in 0 until result?.data?.size!!) {
+                binding.texts.append(result!!.data.get(i).toString())
+            }
+
+
 
         })
     }
